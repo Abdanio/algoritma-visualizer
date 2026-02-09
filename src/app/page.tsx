@@ -24,10 +24,17 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-4xl mx-auto mb-20"
         >
-          <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-wide">
-            POWERED BY PYTHON & NEXT.JS
+          <div className="flex flex-col items-center gap-3 mb-8">
+            <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium tracking-wide">
+              CREATED BY <span className="font-bold">PARCHEZZI TECH</span>
+            </div>
+            <div className="px-3 py-1 rounded-md border border-yellow-500/30 bg-yellow-500/5 text-yellow-500 text-[11px] font-semibold tracking-wider uppercase flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
+              Status: Still Under Development
+            </div>
           </div>
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-secondary animate-pulse-slow">
+
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight bg-clip-text text-transparent bg-linear-to-r from-white via-primary to-secondary animate-pulse-slow">
             Algorithm <br />
             Visualizer
           </h1>
@@ -50,7 +57,7 @@ export default function Home() {
           <Link href="/sorting" passHref legacyBehavior>
             <Card className="group hover:border-primary/50 transition-colors cursor-pointer" title="Sorting Algorithms">
               <a className="block h-full">
-                <div className="h-40 bg-gradient-to-b from-primary/5 to-transparent rounded-lg mb-4 flex items-end justify-center gap-1 p-4">
+                <div className="h-40 bg-linear-to-b from-primary/5 to-transparent rounded-lg mb-4 flex items-end justify-center gap-1 p-4">
                   {[40, 70, 30, 80, 50, 90, 20, 60].map((h, i) => (
                     <div key={i} className="w-3 bg-primary/40 rounded-t-sm group-hover:bg-primary transition-colors duration-500" style={{ height: `${h}%` }} />
                   ))}
@@ -68,7 +75,7 @@ export default function Home() {
           <Link href="/pathfinding" passHref legacyBehavior>
             <Card className="group hover:border-secondary/50 transition-colors cursor-pointer" title="Pathfinding">
               <a className="block h-full">
-                <div className="h-40 bg-gradient-to-b from-secondary/5 to-transparent rounded-lg mb-4 grid grid-cols-6 gap-1 p-4 opacity-70">
+                <div className="h-40 bg-linear-to-b from-secondary/5 to-transparent rounded-lg mb-4 grid grid-cols-6 gap-1 p-4 opacity-70">
                   {Array.from({ length: 24 }).map((_, i) => (
                     <div key={i} className={`rounded-sm ${(i === 4 || i === 15) ? 'bg-secondary' : 'bg-muted'}`} />
                   ))}
@@ -86,7 +93,7 @@ export default function Home() {
           <Link href="/recursive" passHref legacyBehavior>
             <Card className="group hover:border-accent/50 transition-colors cursor-pointer" title="Recursive Patterns">
               <a className="block h-full">
-                <div className="h-40 bg-gradient-to-b from-accent/5 to-transparent rounded-lg mb-4 flex items-center justify-center">
+                <div className="h-40 bg-linear-to-b from-accent/5 to-transparent rounded-lg mb-4 flex items-center justify-center">
                   <div className="w-20 h-20 border-2 border-accent/40 rounded-full flex items-center justify-center animate-spin-slow">
                     <div className="w-12 h-12 border-2 border-accent/60 rounded-full" />
                   </div>
@@ -102,6 +109,11 @@ export default function Home() {
           </Link>
         </div>
       </main>
+
+      <footer className="container mx-auto px-6 py-12 text-center text-muted-foreground text-sm border-t border-white/5 relative z-10">
+        <p>© 2026 Parchezzi Tech. All rights reserved.</p>
+        <p className="mt-2 text-primary/50 font-medium tracking-wide italic">"Innovating education through visualization"</p>
+      </footer>
     </div>
   );
 }
