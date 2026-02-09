@@ -1,0 +1,11 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/index.py"
+        }
+    ],
+    "framework": "nextjs",
+    "buildCommand": "npm run build && pip install -r requirements.txt",
+    "installCommand": "npm install"
+}
