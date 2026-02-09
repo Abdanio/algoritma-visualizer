@@ -91,51 +91,63 @@ export default function SortingVisualizer() {
     return (
         <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto">
             {/* Controls */}
-            <Card className="p-6 flex flex-wrap items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                    <select
-                        value={algorithm}
-                        onChange={(e) => {
-                            setAlgorithm(e.target.value);
-                            setSteps([]);
-                            setCurrentStep(0);
-                        }}
-                        className="bg-black/40 border border-white/10 rounded-md px-3 py-2 text-sm text-foreground focus:ring-2 focus:ring-primary outline-none"
-                        disabled={isPlaying}
-                    >
-                        <option value="bubble">Bubble Sort</option>
-                        <option value="quick">Quick Sort</option>
-                        <option value="merge">Merge Sort</option>
-                    </select>
+            <Card className="p-6">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                    {/* Group 1: Algo Selection & Reset */}
+                    <div className="flex items-center gap-3 w-full md:w-auto">
+                        <div className="relative">
+                            <select
+                                value={algorithm}
+                                onChange={(e) => {
+                                    setAlgorithm(e.target.value);
+                                    setSteps([]);
+                                    setCurrentStep(0);
+                                }}
+                                className="bg-black/40 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-foreground focus:ring-2 focus:ring-primary outline-none appearance-none min-w-[140px] cursor-pointer"
+                                disabled={isPlaying}
+                            >
+                                <option value="bubble">Bubble Sort</option>
+                                <option value="quick">Quick Sort</option>
+                                <option value="merge">Merge Sort</option>
+                                <option value="insertion">Insertion Sort</option>
+                            </select>
+                            {/* Custom Arrow Icon could go here, relying on browser default for now but styled better */}
+                        </div>
 
-                    <Button variant="outline" onClick={resetArray} disabled={isPlaying}>
-                        <RotateCcw className="w-4 h-4 mr-2" /> Reset
+                        <Button variant="outline" onClick={resetArray} disabled={isPlaying} className="px-4">
+                            <RotateCcw className="w-4 h-4 mr-2" /> Reset
+                        </Button>
+                    </div>
+
+                    {/* Group 2: Speed Control */}
+                    <div className="flex flex-col items-center gap-2 w-full md:w-auto">
+                        <div className="flex items-center justify-between w-full md:w-48">
+                            <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">Speed</span>
+                            <span className="text-[10px] text-primary font-mono">{speed}%</span>
+                        </div>
+                        <input
+                            type="range"
+                            min="10"
+                            max="100"
+                            value={speed}
+                            onChange={(e) => setSpeed(Number(e.target.value))}
+                            className="w-full md:w-48 accent-primary h-1.5 bg-white/10 rounded-full outline-none cursor-pointer hover:bg-white/20 transition-colors"
+                        />
+                    </div>
+
+                    {/* Group 3: Play/Pause */}
+                    <Button
+                        variant={isPlaying ? "secondary" : "primary"}
+                        onClick={isPlaying ? stopSorting : startSorting}
+                        className="w-full md:w-auto min-w-[140px] shadow-lg"
+                    >
+                        {isPlaying ? (
+                            <><Pause className="w-4 h-4 mr-2" /> Pause</>
+                        ) : (
+                            <><Play className="w-4 h-4 mr-2" /> Start Sorting</>
+                        )}
                     </Button>
                 </div>
-
-                <div className="flex items-center gap-4 flex-1 justify-center">
-                    <span className="text-xs text-muted-foreground uppercase tracking-widest">Speed</span>
-                    <input
-                        type="range"
-                        min="10"
-                        max="100"
-                        value={speed}
-                        onChange={(e) => setSpeed(Number(e.target.value))}
-                        className="w-32 accent-primary appearance-none h-2 bg-white/10 rounded-full outline-none"
-                    />
-                </div>
-
-                <Button
-                    variant={isPlaying ? "secondary" : "primary"}
-                    onClick={isPlaying ? stopSorting : startSorting}
-                    className="min-w-[120px]"
-                >
-                    {isPlaying ? (
-                        <><Pause className="w-4 h-4 mr-2" /> Pause</>
-                    ) : (
-                        <><Play className="w-4 h-4 mr-2" /> Start</>
-                    )}
-                </Button>
             </Card>
 
             {/* Visualization Area */}
@@ -169,8 +181,8 @@ export default function SortingVisualizer() {
                             key={idx} // Using index as key for now since values are not unique/stable identifiers in simple array sorts without IDs
                             transition={{ type: "spring", stiffness: 300, damping: 25 }}
                             className={`rounded-t-sm w-full relative group overflow-hidden ${highlightIndices?.includes(idx)
-                                    ? "bg-secondary shadow-[0_0_15px_#ff00ff]"
-                                    : "bg-primary/80 hover:bg-primary"
+                                ? "bg-secondary shadow-[0_0_15px_#ff00ff]"
+                                : "bg-primary/80 hover:bg-primary"
                                 }`}
                             style={{ height: `${value}%` }}
                         >

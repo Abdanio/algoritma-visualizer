@@ -2,64 +2,55 @@
 
 This project aims to build a high-performance, visually stunning algorithm visualizer using **Next.js (Frontend)** for premium aesthetics and **Python (FastAPI/Flask)** for the algorithmic logic, deployable for free on Vercel.
 
-## Phase 1: Project Initialization & Configuration
+## Phase 1: Project Initialization & Configuration ✅
 
-- [ ] **Initialize Next.js Project**
-  - Create a new Next.js app with TypeScript and Tailwind CSS (as per premium design requirements).
-  - Configure `next.config.js`.
-- [ ] **Setup Python Backend (Serverless)**
+- [x] **Initialize Next.js Project**
+  - Create a new Next.js app with TypeScript and Tailwind CSS.
+  - Configure `next.config.mjs`.
+- [x] **Setup Python Backend (Serverless)**
   - Create an `api/` directory for Python serverless functions.
-  - Initialize a virtual environment and `requirements.txt`.
-  - Install `FastAPI` and `Uvicorn` (or Flask) for handling requests.
-- [ ] **Vercel Configuration**
-  - Create `vercel.json` to route API requests to the Python backend and serve the Next.js frontend.
-  - Configure builds to install Python dependencies.
+  - Initialize `requirements.txt`.
+  - Install `Flask` and `Flask-CORS` (for local dev).
+- [x] **Vercel Configuration**
+  - Create `vercel.json` to route API requests to the Python backend.
 
-## Phase 2: Core Architecture & Design System
+## Phase 2: Core Architecture & Design System ✅
 
-- [ ] **Design System Setup**
-  - Define a vibrant color palette (Neon/Cyberpunk or Clean Modern) in `tailwind.config.ts`.
-  - Create reusable UI components: `Button`, `Card`, `Select`, `Slider` (for speed control).
-  - Implement a request wrapper to fetch algorithm steps from the Python backend.
-- [ ] **Layout & Navigation**
-  - Create a responsive `Navbar` and `Footer`.
-  - Design a stunning **Hero Section** with animated background elements.
-  - Create an **Algorithm Dashboard** layout.
+- [x] **Design System Setup**
+  - Define "Neon/Cyberpunk" color palette in `tailwind.config.ts`.
+  - Create reusable UI components: `Button`, `Card`, Glassmorphism effects.
+- [x] **Layout & Navigation**
+  - Create interactive Homepage with algorithm category cards.
+  - Implement navigation between Sorting, Pathfinding, and Recursive pages.
 
-## Phase 3: Algorithm Implementation (Python)
+## Phase 3: Algorithm Implementation (Python) ✅
 
-The backend will process the algorithm and return a JSON sequence of "steps" (states) for the frontend to animate.
+- [x] **Sorting Algorithms Engine**
+  - Bubble, Quick, Merge, and Insertion Sort implemented.
+- [x] **Pathfinding Algorithms Engine**
+  - Dijkstra, A*, BFS, and DFS implemented with grid state step generation.
+- [x] **Recursive Algorithms Engine**
+  - N-Queens Backtracking and Sierpinski Fractal implemented.
 
-- [ ] **Sorting Algorithms Engine**
-  - Implement `Bubble Sort`, `Quick Sort`, `Merge Sort` in Python.
-  - Create a standard response format: `{ "steps": [ { "array": [...], "highlight": [indices...], "description": "Swapping..." } ] }`.
-- [ ] **Pathfinding Algorithms Engine**
-  - Implement `Dijkstra`, `A* (A-Star)`, `BFS/DFS` in Python.
-  - Define grid state representation and step generation.
+## Phase 4: Frontend Visualization & Animation ✅
 
-## Phase 4: Frontend Visualization & Animation
+- [x] **Sorting Visualizer Component**
+  - Bar chart visualization with Framer Motion animations.
+  - Controls: Play/Pause, Speed, Reset, Selection.
+- [x] **Pathfinding Visualizer Component**
+  - Interactive Grid with wall drawing.
+  - Animated visitation and path reconstruction.
+- [x] **Recursive Visualizer Component**
+  - Chess board visualization for N-Queens.
+  - SVG Canvas for Fractal (Sierpinski) visualization.
 
-- [ ] **Sorting Visualizer Component**
-  - Create a dynamic bar chart visualization.
-  - Implement the animation loop to render steps received from the backend.
-  - Add controls: Play, Pause, Reset, Speed Adjustment.
-- [ ] **Pathfinding Visualizer Component**
-  - Create an interactive Grid (start node, end node, walls).
-  - Implement path animation (visited nodes, shortest path).
-
-## Phase 5: Polish & Deployment
+## Phase 5: Polish & Deployment (Current) 🚧
 
 - [ ] **Performance Optimization**
-  - Ensure smooth 60fps animations.
-  - optimize API response size.
 - [ ] **SEO & Metadata**
-  - Add dynamic meta tags for each algorithm page.
-- [ ] **Deployment**
-  - Push code to GitHub.
-  - Connect to Vercel and verify the build pipeline.
-  - Test the live deployment.
+- [ ] **Deployment to Vercel**
 
-## Bonus Features (If Time Permits)
+## Bonus Features
 
-- [ ] **Code View**: Show the Python code alongside the visualization with active line highlighting.
-- [ ] **Complexity Analysis**: Display Big-O notation and real-time step counters.
+- [ ] **Code View**: Show the Python code alongside the visualization.
+- [ ] **Complexity Analysis**: Display Big-O notation.
